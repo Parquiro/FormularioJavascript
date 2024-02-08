@@ -1,22 +1,18 @@
-/* Importar la fuente Roboto */
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap');
 
-/* Estilos generales del cuerpo */
 body {
     font-family: 'Roboto', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f2f2f2; /* Cambiar el color de fondo a un tono más claro */
+    background-color: #f2f2f2;
 }
 
-/* Estilos para el título */
 h1 {
     text-align: center;
     margin-bottom: 20px;
     color: #333;
 }
 
-/* Estilos para la tabla */
 table {
     width: 80%;
     margin: 20px auto;
@@ -27,14 +23,12 @@ table {
     background-color: #fff;
 }
 
-/* Estilos para las celdas de la tabla */
 th, td {
     padding: 10px;
     text-align: center;
     border-bottom: 1px solid #ddd;
 }
 
-/* Estilos para el botón de volver */
 button {
     display: block;
     margin: 20px auto;
@@ -47,7 +41,6 @@ button {
     cursor: pointer;
 }
 
-/* Estilos para el botón de volver al pasar el mouse */
 button:hover {
     background-color: #45a049;
 }

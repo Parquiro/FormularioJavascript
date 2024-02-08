@@ -23,18 +23,13 @@ document.getElementById('packageForm').addEventListener('submit', function(event
         totalPrice: totalPrice
     };
 
-    // Obtener la lista de pedidos almacenados o crear una nueva lista si no hay ninguna
     var orders = JSON.parse(localStorage.getItem('orders')) || [];
 
-    // Agregar el nuevo pedido a la lista
     orders.push(order);
 
-    // Guardar la lista actualizada en el almacenamiento local
     localStorage.setItem('orders', JSON.stringify(orders));
 
-    // Reiniciar el formulario
     document.getElementById('packageForm').reset();
 
-    // Mostrar un mensaje de confirmación
     alert('Pedido registrado con éxito');
 });

@@ -1,15 +1,12 @@
-/* Importar la fuente Roboto */
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap');
 
-/* Estilos generales del cuerpo */
 body {
     font-family: 'Roboto', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f2f2f2; /* Cambiar el color de fondo a un tono más claro */
+    background-color: #f2f2f2;
 }
 
-/* Estilos del contenedor principal */
 .container {
     max-width: 400px;
     margin: 50px auto;
@@ -20,7 +17,6 @@ body {
     animation: fadeIn 1s ease-in-out;
 }
 
-/* Animación para el contenedor principal */
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -32,27 +28,22 @@ body {
     }
 }
 
-/* Estilos para los títulos */
 h2 {
     text-align: center;
     margin-bottom: 20px;
     color: #333;
 }
 
-/* Estilos para los grupos de formulario */
 .form-group {
     margin-bottom: 15px;
 }
 
-/* Estilos para las etiquetas */
 label {
     display: block;
     margin-bottom: 5px;
     color: #555;
 }
 
-
-/* Estilos para el botón de enviar */
 input[type="submit"] {
     width: 100%;
     padding: 12px;
@@ -66,7 +57,6 @@ input[type="submit"] {
     font-size: 16px;
 }
 
-/* Estilos para el botón de enviar al pasar el mouse */
 input[type="submit"]:hover {
     background-color: #45a049;
 }
