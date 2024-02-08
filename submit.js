@@ -1,57 +1,40 @@
-document.getElementById('recordForm').addEventListener('submit', function(event) {
+document.getElementById('packageForm').addEventListener('submit', function(event) {
     event.preventDefault();
 
-    var firstName = document.getElementById('firstName').value;
-    var lastName = document.getElementById('lastName').value;
-    var username = document.getElementById('username').value;
-    var email = document.getElementById('email').value;
-    var password = document.getElementById('password').value;
-    var confirmPassword = document.getElementById('confirmPassword').value;
-    var dob = document.getElementById('dob').value;
-    var gender = document.getElementById('gender').value;
+    var clownWeight = parseFloat(document.getElementById('clownWeight').value);
+    var dollWeight = parseFloat(document.getElementById('dollWeight').value);
+    var clownQuantity = parseInt(document.getElementById('clownQuantity').value);
+    var dollQuantity = parseInt(document.getElementById('dollQuantity').value);
+    var pricePerGram = parseFloat(document.getElementById('pricePerGram').value);
 
-    if (password !== confirmPassword) {
-        alert('Las contraseñas no coinciden');
-        return;
-    }
+    var totalClownWeight = clownWeight * clownQuantity;
+    var totalDollWeight = dollWeight * dollQuantity;
+    var totalWeight = totalClownWeight + totalDollWeight;
+    var totalPrice = totalWeight * pricePerGram;
 
-    var user = {
-        firstName: firstName,
-        lastName: lastName,
-        username: username,
-        email: email,
-        password: password,
-        dob: dob,
-        gender: gender
+    var order = {
+        clownWeight: clownWeight,
+        dollWeight: dollWeight,
+        clownQuantity: clownQuantity,
+        dollQuantity: dollQuantity,
+        totalClownWeight: totalClownWeight,
+        totalDollWeight: totalDollWeight,
+        totalWeight: totalWeight,
+        totalPrice: totalPrice
     };
 
+    // Obtener la lista de pedidos almacenados o crear una nueva lista si no hay ninguna
+    var orders = JSON.parse(localStorage.getItem('orders')) || [];
 
-    var users = JSON.parse(localStorage.getItem('users')) || [];
-    users.push(user);
-    localStorage.setItem('users', JSON.stringify(users));
+    // Agregar el nuevo pedido a la lista
+    orders.push(order);
 
-    document.getElementById('recordForm').reset();
+    // Guardar la lista actualizada en el almacenamiento local
+    localStorage.setItem('orders', JSON.stringify(orders));
 
-    alert('Usuario registrado con éxito');
-});
+    // Reiniciar el formulario
+    document.getElementById('packageForm').reset();
 
-// Usuarios Almacenados
-document.getElementById('showUsersButton').addEventListener('click', function() {
-    var users = JSON.parse(localStorage.getItem('users'));
-
-    if (users && users.length > 0) {
-        var message = 'Usuarios Almacenados:\n';
-        users.forEach(function(user, index) {
-            message += '\nUsuario ' + (index + 1) + ':\n';
-            message += 'Nombre: ' + user.firstName + ' ' + user.lastName + '\n';
-            message += 'Nombre de Usuario: ' + user.username + '\n';
-            message += 'Correo Electrónico: ' + user.email + '\n';
-            message += 'Fecha de Nacimiento: ' + user.dob + '\n';
-            message += 'Género: ' + user.gender + '\n';
-        });
-
-        alert(message);
-    } else {
-        alert('No hay usuarios almacenados');
-    }
+    // Mostrar un mensaje de confirmación
+    alert('Pedido registrado con éxito');
 });

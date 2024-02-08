@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="pedidos.css">
+<title>Registro de Pedidos</title>
+</head>
+<body>
+    <h1>Registro de Pedidos</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Peso Total Payasos</th>
+                <th>Peso Total Muñecas</th>
+                <th>Cantidad Payasos</th>
+                <th>Cantidad Muñecas</th>
+                <th>Total Peso</th>
+                <th>Total Precio</th>
+            </tr>
+        </thead>
+        <tbody id="ordersList">
+            <!-- Aquí se mostrarán los registros de pedidos -->
+        </tbody>
+    </table>
+
+    <button onclick="volver()">Volver a la Página Principal</button>
+
+    <script>
+        // Obtener los pedidos del almacenamiento local
+        var orders = JSON.parse(localStorage.getItem('orders')) || [];
+
+        // Mostrar los pedidos en la tabla
+        var ordersList = document.getElementById('ordersList');
+        orders.forEach(function(order, index) {
+            var row = '<tr>';
+            row += '<td>' + (index + 1) + '</td>';
+            row += '<td>' + order.totalClownWeight + ' gr</td>';
+            row += '<td>' + order.totalDollWeight + ' gr</td>';
+            row += '<td>' + order.clownQuantity + '</td>';
+            row += '<td>' + order.dollQuantity + '</td>';
+            row += '<td>' + order.totalWeight + ' gr</td>';
+            row += '<td>$' + order.totalPrice.toFixed(2) + '</td>';
+            row += '</tr>';
+            ordersList.innerHTML += row;
+        });
+
+        // Función para volver a la página principal
+        function volver() {
+            window.location.href = 'index.html';
+        }
+    </script>
+</body>
+</html>
